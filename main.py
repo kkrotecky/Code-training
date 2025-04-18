@@ -12,6 +12,8 @@ if weather.input() == "yes" or "y":
 else:
     print("I hope the weather gets better soon!")
 
+#Moge z poziomu przegladarki wpisac komentarze i ogarniac to pozniej w vs code.
+
 print("What is your favorite color?")
 color = input("Enter your favorite color:")
 print("Your favorite color is " + color + "!")
