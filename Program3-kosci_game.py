@@ -1,7 +1,7 @@
 import random
 
 def rzut_kostka():
-    return random.randit(1, 6)
+    return random.randint(1, 6)
 
 def gra_kosci():
     print("Witaj, jak masz na imię?")
@@ -19,6 +19,7 @@ def gra_kosci():
         print("Dziękuję za grę! Do zobaczenia następnym razem!")
         return False
     return True
+start = input()
     
 
-gra_kosci()
+print(rzut_kostka())

@@ -7,7 +7,7 @@ name = input("Enter your name:")
 print ("Hello " + name + "!") 
 print("How do your like the wearther today?")
 weather = input("Is the weather nice? (Yes/No):")
-if weather.input() == "yes" or "y":
+if weather == "yes" or "y":
     print("That's great to hear!")
 else:
     print("I hope the weather gets better soon!")
