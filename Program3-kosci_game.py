@@ -19,7 +19,6 @@ def gra_kosci():
         print("Dziękuję za grę! Do zobaczenia następnym razem!")
         return False
     return True
-start = input()
-    
 
-print(rzut_kostka())
+rzut1 = print(f"Rzut 1: {rzut_kostka()}")
+rzut2 = print(f"Rzut 2: {rzut_kostka()}")
