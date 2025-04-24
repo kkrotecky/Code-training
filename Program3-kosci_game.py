@@ -57,6 +57,14 @@ def core():
     else:
         print("Remis! Obaj gracze zdobyli tyle samo punktów.")
 
+    print("Czy chcecie zagrać jeszcze raz? (tak/nie)")
+    odpowiedz = input()
+    if odpowiedz.lower() == "tak":
+        core()
+    else:
+        print("Dzięki za grę! Do widzenia!")
+
+
 imie1, imie2 = intro()
 instrukcja()
 core()
