@@ -10,35 +10,35 @@ So far my main goal is:
 ## Python
 
 - [ ] **Basic Syntax**:
-  - [ ]Variables and data types
-  - [ ]Basic operators
-  - [ ]Control structures (if-else, loops)
+  - [ ] Variables and data types
+  - [ ] Basic operators
+  - [ ] Control structures (if-else, loops)
 
 - [ ] **Functions and Modules**:
-  - [ ]Define and call functions
-  - [ ]Function arguments and return values
-  - [ ]Import and use modules
-  - [ ]Create your own modules
+  - [ ] Define and call functions
+  - [ ] Function arguments and return values
+  - [ ] Import and use modules
+  - [ ] Create your own modules
 
 - [ ] **Data Structures**:
-  - [ ]Lists, tuples, dictionaries, and sets
-  - [ ]List comprehensions
+  - [ ] Lists, tuples, dictionaries, and sets
+  - [ ] List comprehensions
 
 - [ ] **File Handling**:
-  - [ ]Read from and write to files
+  - [ ] Read from and write to files
 
 - [ ] **Exception Handling**:
-  - [ ]Try-except blocks
-  - [ ]Raise exceptions
+  - [ ] Try-except blocks
+  - [ ] Raise exceptions
 
 - [ ] **Object-Oriented Programming (OOP)**:
-  - [ ]Classes and objects
-  - [ ]Inheritance
-  - [ ]Methods and attributes
+  - [ ] Classes and objects
+  - [ ] Inheritance
+  - [ ] Methods and attributes
 
-- [ ] **Data Analysis (Numpy) **
+- [ ] **Data Analysis (Numpy)**:
 
-- [ ] ** Web Scrapping (Beautiful Soup) **
+- [ ] **Web Scrapping (Beautiful Soup)**:
 
 
 
