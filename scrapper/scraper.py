@@ -34,7 +34,7 @@ def scrape(url):
     }
     df = pd.DataFrame(data)
     
-    df.to_csv('Test/countries.csv', index=False)
+    df.to_csv('scrapper/countries.csv', index=False)
     print("Data saved to countries.csv")
     
 
