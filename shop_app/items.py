@@ -1,7 +1,5 @@
-def items_list():
-
-    items_def = {
-        "banana" : {
+items_dict = {
+      "banana" : {
             "weight" : 1,
             "cost" : 2
         },
@@ -50,6 +48,6 @@ def items_list():
             "cost" : 50
         },
     }
-    print(len(items_def))
-
-items_list()
+    # Add more items as needed
+    # Example usage of the items_dict
+    # print(items_dict["banana"]["cost"])  # Output: 2
