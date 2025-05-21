@@ -1,3 +1,5 @@
+import csv
+
 items_dict = {
       "banana" : {
             "weight" : 1,
@@ -51,3 +53,29 @@ items_dict = {
     # Add more items as needed
     # Example usage of the items_dict
     # print(items_dict["banana"]["cost"])  # Output: 2
+
+def export_to_csv():
+    # Define the CSV file path
+    csv_file_path = 'D://CODE/Test/shop_app/items.csv'
+    
+    # Open the file in write mode
+    with open(csv_file_path, 'w', newline='') as csvfile:
+        # Define the CSV writer and headers
+        fieldnames = ['item', 'weight', 'cost']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        
+        # Write the header row
+        writer.writeheader()
+        
+        # Write each item's data
+        for item_name, details in items_dict.items():
+            writer.writerow({
+                'item': item_name,
+                'weight': details['weight'],
+                'cost': details['cost']
+            })
+
+# Export the dictionary when this file is run directly
+if __name__ == "__main__":
+    export_to_csv()
+    print("Items exported to items.csv successfully!")
