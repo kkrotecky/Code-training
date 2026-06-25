@@ -1,72 +1,78 @@
-import os
+"""Email order confirmation — sends via SMTP using centralized config."""
+
 import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 from datetime import datetime
-from dotenv import load_dotenv
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from typing import Dict, List, Tuple
 
-# Load environment variables
-load_dotenv()
+from config import SENDER_EMAIL, SENDER_PASSWORD, SHOP_EMAIL, SMTP_SERVER, SMTP_PORT
 
-# Email configuration
-SMTP_SERVER = "smtp.gmail.com"
-SMTP_PORT = 587
-SENDER_EMAIL = os.getenv('SMTP_EMAIL')
-SENDER_PASSWORD = os.getenv('SMTP_PASSWORD')
-SHOP_EMAIL = os.getenv('SHOP_EMAIL')
 
-def send_order_confirmation(customer_email, basket, total_cost, total_weight, shipping_cost):
+def send_order_confirmation(
+    customer_email: str,
+    basket: List[str],
+    total_cost: float,
+    total_weight: float,
+    shipping_cost: float,
+) -> Tuple[bool, str]:
+    """Send order confirmation to both the customer and the shop.
+
+    Returns (success, message).
+    """
     if not all([SENDER_EMAIL, SENDER_PASSWORD, SHOP_EMAIL]):
         return False, "Email configuration missing. Please check environment variables."
 
     try:
-        # Create message
-        msg = MIMEMultipart()
-        msg['From'] = SENDER_EMAIL
-        msg['Subject'] = "Order Confirmation"
-        
-        # Create item summary
-        items_summary = []
-        item_counts = {}
+        # Build shared body
+        item_counts: Dict[str, int] = {}
         for item in basket:
             item_counts[item] = item_counts.get(item, 0) + 1
-        
-        for item, count in item_counts.items():
-            items_summary.append(f"- {item} (x{count})")
-        
-        # Create email body
-        body = f"""
-        Order Confirmation
-        -----------------
-        Date: {datetime.now().strftime('%Y-%m-%d %H:%M')}
-        
-        Items Ordered:
-        {chr(10).join(items_summary)}
-        
-        Order Summary:
-        -------------
-        Total Cost: €{total_cost:.2f}
-        Total Weight: {total_weight:.2f}kg
-        Shipping Cost: €{shipping_cost:.2f}
-        Final Total: €{total_cost + shipping_cost:.2f}
-        """
-        
-        msg.attach(MIMEText(body, 'plain'))
-        
-        # Connect to SMTP server
+
+        items_summary = "\n".join(f"- {name} (x{qty})" for name, qty in item_counts.items())
+        date_str = datetime.now().strftime("%Y-%m-%d %H:%M")
+        final_total = total_cost + shipping_cost
+
+        body = f"""Order Confirmation
+-----------------
+Date: {date_str}
+
+Items Ordered:
+{items_summary}
+
+Order Summary:
+-------------
+Total Cost: €{total_cost:.2f}
+Total Weight: {total_weight:.2f}kg
+Shipping Cost: €{shipping_cost:.2f}
+Final Total: €{final_total:.2f}
+"""
+
         with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
             server.starttls()
             server.login(SENDER_EMAIL, SENDER_PASSWORD)
-            
-            # Send to customer
-            msg['To'] = customer_email
-            server.send_message(msg)
-            
-            # Send to shop
-            msg['To'] = SHOP_EMAIL
-            server.send_message(msg)
-            
-        return True, "Order confirmation sent successfully"
-        
+
+            # ── Send to customer ──
+            msg_customer = MIMEMultipart()
+            msg_customer["From"] = SENDER_EMAIL
+            msg_customer["To"] = customer_email
+            msg_customer["Subject"] = "Order Confirmation"
+            msg_customer.attach(MIMEText(body, "plain"))
+            server.send_message(msg_customer)
+
+            # ── Send to shop ──
+            msg_shop = MIMEMultipart()
+            msg_shop["From"] = SENDER_EMAIL
+            msg_shop["To"] = SHOP_EMAIL
+            msg_shop["Subject"] = f"New Order — {customer_email}"
+            msg_shop.attach(MIMEText(body, "plain"))
+            server.send_message(msg_shop)
+
+        return True, "Order confirmation sent successfully."
+
+    except smtplib.SMTPAuthenticationError:
+        return False, "SMTP authentication failed — check your email credentials in .env"
+    except smtplib.SMTPException as e:
+        return False, f"SMTP error: {e}"
     except Exception as e:
-        return False, f"Error sending confirmation: {str(e)}"
+        return False, f"Error sending confirmation: {e}"
