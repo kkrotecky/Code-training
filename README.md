@@ -1,100 +1,106 @@
-# My Programing and Cybersecurity Training Repository
+# My Programming & Cybersecurity Training Repository
+*Learning Python, Bash, and security fundamentals through bite‑size projects.*
 
-This repository contains my learning journey in Python programming, bash scripting, and cybersecurity fundamentals.
+[![Python 3.13](https://img.shields.io/badge/python-3.13-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
+## Table of Contents
+- [Project Structure](#project-structure)
+- [Learning Areas](#learning-areas)
+  - [Python Programming](#python-programming)
+  - [Cybersecurity](#cybersecurity)
+  - [Bash Scripting](#bash-scripting)
+- [Projects](#projects)
+  - [Shopping Cart Application](#shopping-cart-application)
+  - [Text‑Based Games](#text-based-games)
+- [Getting Started](#getting-started)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
 ## Project Structure
-
 ```
-TEST/
-├── shop_app/               # Shopping Cart Application
-│   ├── shopping_app.py     # Main GUI application
-│   ├── items.csv          # Product catalog
-│   ├── mailing.py         # Email functionality
-│   └── README.md          # Project documentation
-│
-├── games/                  # Python Games Projects
-│   ├── basic_text_game.py # Text-based adventure game
-│   └── dice_text_game.py  # Dice rolling game
-│
-└── scripts/               # Practice Scripts
-    ├── tuple.py          # Tuple manipulation examples
-    ├── simple_calculator.py # Simple terminal based calculator
-    ├── numbers.py  # Numbers and loops excersise
-    └──lists.py     # Simple lists excersise
+Test/
+├─ shop_app/
+│  ├─ shopping_app.py
+│  ├─ items.csv
+│  ├─ mailing.py
+│  └─ README.md
+├─ games/
+│  ├─ basic_text_game.py
+│  └─ dice_text_game.py
+└─ scripts/
+   ├─ tuple.py
+   ├─ simple_calculator.py
+   ├─ numbers.py
+   └─ lists.py
 ```
 
 ## Learning Areas
 
 ### Python Programming
-- **GUI Development**
-  - Tkinter for desktop applications
-  - Event handling and user interactions
-  - Modern UI design with Sun Valley theme
-
-- **Object-Oriented Programming**
-  - Class implementations
-  - Inheritance and polymorphism
-  - Code organization and structure
-
-- **File Operations**
-  - CSV data handling
-  - JSON configuration files
-  - File path management
+- **GUI Development** – Tkinter, event handling, Sun Valley theme
+- **Object‑Oriented Programming** – classes, inheritance, polymorphism
+- **File Operations** – CSV, JSON, path handling
 
 ### Cybersecurity
-- **Secure Coding Practices**
-  - Environment variable usage
-  - Secure credential management
-  - Input validation
-
-- **Email Security**
-  - SMTP implementation
-  - Secure email notifications
-  - Password protection
+- **Secure Coding Practices** – environment variables, credential handling, input validation
+- **Email Security** – SMTP, secure notifications, password protection
 
 ### Bash Scripting
-- File system navigation
-- Script automation
-- System commands
+- File‑system navigation, automation, system commands
 
 ## Projects
 
 ### Shopping Cart Application
-A full-featured GUI application demonstrating:
+A Tkinter‑based GUI that demonstrates:
 - User profile management
-- Shipping calculations
-- Email notifications
-- Database operations
+- Shipping calculation
+- Email notifications (via `mailing.py`)
+- Simple CSV‑based “database”
 
-### Text-Based Games
-Simple console applications focusing on:
+### Text‑Based Games
+Console games that focus on:
 - User input handling
-- Game logic implementation
+- Game‑loop logic
 - Score tracking
 
-## Skills Demonstrated
+## Getting Started
 
-- Version Control (Git)
-- Project Documentation
-- Code Organization
-- Error Handling
-- User Interface Design
-- Security Best Practices
-- AI in wokflow implementation
+### Prerequisites
+- Python 3.11+ (the repo was created with 3.13)
+- `pip` for optional dependencies
 
-## Future Learning Goals
+### Installation (optional)
+```bash
+python -m venv .venv
+source .venv/Scripts/activate   # Windows
+# source .venv/bin/activate   # macOS / Linux
 
-- [ ] API Integration
-- [ ] Database Management
-- [ ] Network Programming
-- [ ] Advanced Security Concepts
-- [ ] Testing and CI/CD
-- [ ] Docker Containerization
+# If you later add a requirements.txt, install with:
+# pip install -r requirements.txt
+```
 
-## Contact
+### Running examples
+```bash
+# Play the dice game
+python Test/games/dice_text_game.py
 
-For any questions or suggestions, please feel free to reach out.
+# Use the calculator
+python Test/scripts/simple_calculator.py
+
+# Launch the shop GUI
+python Test/shop_app/shopping_app.py
+```
+
+## Contributing
+Contributions are welcome! Please:
+- Follow the existing code style (`ruff`/`black` recommended).
+- Provide a concise PR title and description.
+- Add docstrings for new functions/classes.
 
 ## License
+This repository is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.
 
-This repository is for educational purposes.
+## Contact
+Feel free to open an issue or reach out via email (your-email@example.com).

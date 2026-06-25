@@ -496,5 +496,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 # This code is a simple shopping cart program that allows users to select items from a predefined list, calculates the total cost and weight of the items in the cart, and determines the shipping cost based on the total cost and weight. The program also provides a summary of the selected items, total cost, weight, and shipping cost.
 # The program uses a dictionary to store item details, including their cost and weight. It allows users to add items to their basket until they indicate they are done. The shipping cost is calculated based on the total cost and weight of the items in the basket, with free shipping for orders over €100.
